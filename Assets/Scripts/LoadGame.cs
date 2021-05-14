@@ -8,7 +8,7 @@ public class LoadGame : MonoBehaviour
 {
     [SerializeField] private string SceneName;
     [SerializeField] private GameObject sceneToLoad;
-
+    [SerializeField] private GameObject CanvasMenu;
 
     public void LoadSceneAsync()
     {
@@ -18,6 +18,7 @@ public class LoadGame : MonoBehaviour
     IEnumerator LoadScreenCoroutine()
     {
         var ecran = Instantiate(sceneToLoad);
+        CanvasMenu.SetActive(false);
         DontDestroyOnLoad(ecran);
 
         var chargement = SceneManager.LoadSceneAsync("SCENE");
@@ -32,7 +33,7 @@ public class LoadGame : MonoBehaviour
                 Destroy(ecran);
             }
 
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(4);
 
         }
 
