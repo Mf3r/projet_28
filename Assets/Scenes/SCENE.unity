@@ -1855,7 +1855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216303818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 389, y: 170, z: -10}
+  m_LocalPosition: {x: 387.31342, y: 170, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580159290}
@@ -8841,6 +8841,7 @@ GameObject:
   - component: {fileID: 1105404717}
   - component: {fileID: 1105404719}
   - component: {fileID: 1105404718}
+  - component: {fileID: 1105404720}
   m_Layer: 0
   m_Name: Pink_Monster
   m_TagString: Untagged
@@ -8868,7 +8869,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1105404715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8947,7 +8948,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0059004724, y: -0.008104362}
+  m_Offset: {x: -0.008106604, y: -0.013983928}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8958,7 +8959,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.17839077, y: 0.24416257}
+  m_Size: {x: 0.14163533, y: 0.23240341}
   m_EdgeRadius: 0
 --- !u!111 &1105404718
 Animation:
@@ -8994,6 +8995,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1105404720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105404713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522379d6cded114da4ad05866be394d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 500
+  maxSpeed: 150
+  jumpForce: 450
 --- !u!1 &1118711399
 GameObject:
   m_ObjectHideFlags: 0
@@ -10809,7 +10825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322853777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 389, y: 170, z: -10}
+  m_LocalPosition: {x: 387.31342, y: 170, z: -10}
   m_LocalScale: {x: 32.74254, y: 32.74254, z: 32.74254}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16243,7 +16259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889960677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -101.7, y: 35.5, z: 0}
+  m_LocalPosition: {x: -101.7, y: 34.05, z: 0}
   m_LocalScale: {x: 1.717174, y: 0.7125195, z: 1.9508008}
   m_Children: []
   m_Father: {fileID: 1452889383}
