@@ -3,25 +3,20 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    /*
-    [SerializeField] private int myInt;
 
-    [SerializeField] private string myString;
-
-    private Vector3 position;
-    */
 
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private LayerMask ground; // Permet de sélectionner un ou plusieurs layers pour notre sol
 
     private float direction;
 
     private Controls controls;
-
     private Rigidbody2D rigidbody2D;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    //private bool isOnGround = false;
 
     private bool canJump = false;
 
@@ -34,13 +29,12 @@ public class Player : MonoBehaviour
         controls.Main.MoveLR.canceled += MoveLROncanceled;
     }
 
-    /// <summary>
-    /// Ceci est ma fonction est ma fonction quand je relache le bouton de mouvement
-    /// </summary>
-    /// <param name="obj"></param>
+
     private void MoveLROncanceled(InputAction.CallbackContext obj)
     {
         direction = 0;
+        animator.SetBool("Runing", false);
+
     }
 
     private void MoveLROnperformed(InputAction.CallbackContext obj)
@@ -49,87 +43,48 @@ public class Player : MonoBehaviour
         if (direction > 0)
         {
             spriteRenderer.flipX = false;
+            animator.SetBool("Runing", true);
+
         }
         else
         {
             spriteRenderer.flipX = true;
+            animator.SetBool("Runing", true);
+
         }
-        // OU
-        //spriteRenderer.flipX = direction < 0;
+
     }
 
     private void JumpOnperformed(InputAction.CallbackContext obj)
     {
-        //Debug.Log("Je saute !");
+
         if (canJump)
         {
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             canJump = false;
+            animator.SetBool("Jumping", true);
         }
 
-        //transform.position += new Vector3(0,1,0);
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //spriteRenderer.flipX = true;
-        //animator.SetFloat("Speed", 1.0f);
-        /*
-        Debug.Log(myInt);
-        Debug.Log(myString);
-        if (myInt > 5)
-        {
-            Debug.Log("Ça fait plus de 5");
-        }
 
-        position = new Vector3(0, 0, 0);
-
-        var myVector = new Vector3(1, 1, 1);
-        var multiply = myVector * 3;
-        Debug.Log(multiply);
-        //transform.position = myVector;
-        transform.position = transform.position + new Vector3(1, 0, 0);
-        // Ce que j’écris ici se lancera lorsque le jeu sera lancé
-        Sum(8,7);
-        */
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        //rigidbody2D.velocity = new Vector2(100, 100);
-        /*
-        var mySecondInt = 0;
-        Debug.Log(mySecondInt++);
-        */
-        // S’exécute toutes les frames
-        /*
-        position.x++;
-        transform.position = position;
-        Debug.Log(position);
-        if (transform.position.x > 0)
-        {
-            Debug.Log("Vrai");
-        }
-        else if (transform.position.x == 0)
-        {
-            Debug.Log("Égalité");
-        }
-        // else if (transform.position.x < 0)
-        
-        else
-        {
-            Debug.Log("Faux");
-        }
-        //Debug.Log(transform.position.x);
-        */
-        var hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.001f);
-        //Debug.DrawRay(transform.position, new Vector2(0, -1) * 0.001f);
+
+
+        var hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.01f);
+
         if (hit.collider != null)
         {
             canJump = true;
@@ -137,6 +92,7 @@ public class Player : MonoBehaviour
         else
         {
             canJump = false;
+
         }
     }
 
@@ -145,16 +101,37 @@ public class Player : MonoBehaviour
         var horizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x);
         if (horizontalSpeed < maxSpeed)
             rigidbody2D.AddForce(new Vector2(speed * direction, 0));
-        
+
     }
 
-    void OnApplicationQuit()
+    /*private void OnCollisionEnter2D(Collision2D other)
     {
+        // Booléen vérifiant si le layer sur lequel on a atteri appartient bien au layerMask "ground"
+        var touchGround = ground == (ground | (1 << other.gameObject.layer));
+        // Booléen vérifiant que l'on collisionne avec une surface horizontale
+        var touchFromAbove = other.contacts[0].normal == Vector2.up;
+        if (touchGround && touchFromAbove)
+        //if (other.gameObject.CompareTag("Ground") == true)
+        {
+            isOnGround = true;
+        }
+
     }
 
-    private void Sum(int numberLeft, int numberRight)
+    /// <summary>
+    /// Exécutée lorsque le bouton de saut est appuyé
+    /// </summary>
+    /// <param name="obj"></param>
+    private void JumpOnperf(InputAction.CallbackContext obj)
     {
-        var result = numberLeft + numberRight;
-        //Debug.Log(result);
-    }
+        // Si isOnGround est vrai
+        if (isOnGround)
+        {
+            // On saute
+            rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            // Et on désactive la possibilité de sauter à nouveau
+            isOnGround = false;
+        }
+    }*/
+
 }
