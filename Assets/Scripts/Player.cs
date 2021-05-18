@@ -1,100 +1,88 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;                        //rajoute les inputS. (pakage manager)
 
 public class Player : MonoBehaviour
 {
 
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed;             //float chiffre à virgule
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private LayerMask ground; // Permet de sélectionner un ou plusieurs layers pour notre sol
+    
 
-    private float direction;
+    private float direction;                          //flag qui permt de savoir si on move ou ps(v)
+    private bool  canJump = false;                    //flag pr savoir si on px sauter(v)
 
-    private Controls controls;
-    private Rigidbody2D rigidbody2D;
-    private Animator animator;
+
+    private Controls       controls;                  //classe _ (vrt-->obj)
+    private Rigidbody2D    rigidbody2D;               
+    private Animator       animator;
     private SpriteRenderer spriteRenderer;
-    //private bool isOnGround = false;
 
-    private bool canJump = false;
 
-    private void OnEnable()
+
+    private void OnEnable()                          //Evmt au déclanchemt du player 
     {
-        controls = new Controls();
+        controls = new Controls();                   //input_act
         controls.Enable();
-        controls.Main.Jump.performed += JumpOnperformed;
+        controls.Main.Jump.performed   += JumpOnperformed;                                          
         controls.Main.MoveLR.performed += MoveLROnperformed;
-        controls.Main.MoveLR.canceled += MoveLROncanceled;
+        controls.Main.MoveLR.canceled  += MoveLROncanceled;
     }
 
-
-    private void MoveLROncanceled(InputAction.CallbackContext obj)
+    private void MoveLROncanceled(InputAction.CallbackContext obj)              //MoveOnCanceled-> player statique direction =0
     {
         direction = 0;
-        animator.SetBool("Runing", false);
-
+        animator.SetBool("Running", false);                                     //qd le player est à 0 on arrete l'animation running (running passe à false)
     }
 
-    private void MoveLROnperformed(InputAction.CallbackContext obj)
+    private void MoveLROnperformed(InputAction.CallbackContext obj)            //MoveOnperformed-> player non statique direction !=(diffrt) 0
     {
-        direction = obj.ReadValue<float>();
-        if (direction > 0)
+        direction = obj.ReadValue<float>();                                    //qd <-> la direction devient non null 
+
+     
+        if (direction > 0)                                                     //selon la direction on Flip
         {
             spriteRenderer.flipX = false;
-            animator.SetBool("Runing", true);
-
         }
         else
         {
             spriteRenderer.flipX = true;
-            animator.SetBool("Runing", true);
-
         }
+
+        animator.SetBool("Running", true);                                     //non 0 donc en mode "Running"
 
     }
 
-    private void JumpOnperformed(InputAction.CallbackContext obj)
+    private void JumpOnperformed(InputAction.CallbackContext obj)                       //inputA. Jump
     {
-
         if (canJump)
         {
-            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            canJump = false;
-            animator.SetBool("Jumping", true);
+            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);      //x = 0 , y = jumpForce _ ForcMode(type de force)
+            animator.SetBool("Jumping", true);                                         //passe en mode saut
+            canJump = false;                                                           //emppeche de re-sauter
         }
-
-
     }
 
-    // Start is called before the first frame update
+    private void OnCollisionEnter2D(Collision2D col)                                   //Qd on rentre avec le collider on px sauter
+    {
+        canJump = true;                                                                //px sauter
+
+        animator.SetBool("Jumping", false);                                            //On arrête l'anim "Jumping"
+        
+        if (direction!=0)                                                              //selon la direct° si elle est diff de 0 on cours donc anim 
+           animator.SetBool("Running", true);                                          //-> "Running"
+        else                                                                           //sinn
+           animator.SetBool("Running", false);                                        //-> "Running" = False
+    }
+
     void Start()
     {
-
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        rigidbody2D    = GetComponent<Rigidbody2D>();
+        animator       = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
-
-    void Update()
-    {
-
-
-        var hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.01f);
-
-        if (hit.collider != null)
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -104,34 +92,5 @@ public class Player : MonoBehaviour
 
     }
 
-    /*private void OnCollisionEnter2D(Collision2D other)
-    {
-        // Booléen vérifiant si le layer sur lequel on a atteri appartient bien au layerMask "ground"
-        var touchGround = ground == (ground | (1 << other.gameObject.layer));
-        // Booléen vérifiant que l'on collisionne avec une surface horizontale
-        var touchFromAbove = other.contacts[0].normal == Vector2.up;
-        if (touchGround && touchFromAbove)
-        //if (other.gameObject.CompareTag("Ground") == true)
-        {
-            isOnGround = true;
-        }
-
-    }
-
-    /// <summary>
-    /// Exécutée lorsque le bouton de saut est appuyé
-    /// </summary>
-    /// <param name="obj"></param>
-    private void JumpOnperf(InputAction.CallbackContext obj)
-    {
-        // Si isOnGround est vrai
-        if (isOnGround)
-        {
-            // On saute
-            rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            // Et on désactive la possibilité de sauter à nouveau
-            isOnGround = false;
-        }
-    }*/
 
 }
