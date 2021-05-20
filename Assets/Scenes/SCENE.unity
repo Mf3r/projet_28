@@ -869,7 +869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102427056}
   - component: {fileID: 102427057}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: game_background_4_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 106456319}
   - component: {fileID: 106456320}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 04_Forest (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216303818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392.583, y: 164.6, z: -10}
+  m_LocalPosition: {x: 393.94763, y: 164.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580159290}
@@ -3023,7 +3023,7 @@ GameObject:
   - component: {fileID: 382897172}
   - component: {fileID: 382897171}
   - component: {fileID: 382897173}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 04_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3214,7 +3214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398459527}
   - component: {fileID: 398459526}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 09_Forest (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3414,7 +3414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400140813}
   - component: {fileID: 400140812}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4786,7 +4786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564299359}
   - component: {fileID: 564299360}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5417,7 +5417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644170043}
   - component: {fileID: 644170044}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5690,7 +5690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 658100222}
   - component: {fileID: 658100223}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: game_background_4_0 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6229,7 +6229,7 @@ GameObject:
   - component: {fileID: 769359097}
   - component: {fileID: 769359096}
   - component: {fileID: 769359100}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bckg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6524,7 +6524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785699541}
   - component: {fileID: 785699540}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8472,7 +8472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1008621007}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Plouf_Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9068,7 +9068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151041223}
   - component: {fileID: 1151041222}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10647,7 +10647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322853777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392.583, y: 164.6, z: -10}
+  m_LocalPosition: {x: 393.94763, y: 164.6, z: -10}
   m_LocalScale: {x: 32.74254, y: 32.74254, z: 32.74254}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10697,7 +10697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323287678}
   - component: {fileID: 1323287677}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 09_Forest (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12404,7 +12404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1494654480}
   - component: {fileID: 1494654481}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14457,7 +14457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728940212}
   - component: {fileID: 1728940213}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15325,7 +15325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826526131}
   - component: {fileID: 1826526132}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: rocks (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16088,7 +16088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889960677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -101.7, y: 34.05, z: 0}
+  m_LocalPosition: {x: -101.7, y: 32.8, z: 0}
   m_LocalScale: {x: 1.717174, y: 0.7125195, z: 1.9508008}
   m_Children: []
   m_Father: {fileID: 1452889383}
@@ -16253,7 +16253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913491439}
   - component: {fileID: 1913491440}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: game_background_4_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16978,7 +16978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111471777}
   - component: {fileID: 2111471778}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: game_background_4_0 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

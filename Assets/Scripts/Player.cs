@@ -60,13 +60,14 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);      //x = 0 , y = jumpForce _ ForcMode(type de force)
             animator.SetBool("Jumping", true);                                         //passe en mode saut
-            canJump = false;                                                           //emppeche de re-sauter
+            canJump = false;                                                           //empeche de re-sauter
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col)                                   //Qd on rentre avec le collider on px sauter
     {
         canJump = true;                                                                //px sauter
+
 
         animator.SetBool("Jumping", false);                                            //On arrête l'anim "Jumping"
         
