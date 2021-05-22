@@ -1857,7 +1857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216303818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 333.40857, y: 187.6228, z: -10}
+  m_LocalPosition: {x: 324.22934, y: 187.6228, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580159290}
@@ -10824,7 +10824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322853777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 333.3836, y: 173.42828, z: -10}
+  m_LocalPosition: {x: 378.56528, y: 173.24083, z: -10}
   m_LocalScale: {x: 32.74254, y: 32.74254, z: 32.74254}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16497,7 +16497,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909869651}
   - component: {fileID: 1909869650}
-  - component: {fileID: 1909869652}
   m_Layer: 0
   m_Name: Plouf_Square
   m_TagString: Untagged
@@ -16545,21 +16544,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1909869652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909869649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795be218488030440ad04c1287dee133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  maxSpeed: 0
-  jumpForce: 0
 --- !u!1 &1913491438
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,7 @@ public class Player : MonoBehaviour
 
     private float direction;                          //flag qui permt de savoir si on move ou ps(v)
     private bool  canJump = false;                    //flag pr savoir si on px sauter(v)
-
-
+    private bool canSwim;
     private Controls       controls;                  //classe _ (vrt-->obj)
     private Rigidbody2D    rigidbody2D;               
     private Animator       animator;
@@ -62,11 +61,21 @@ public class Player : MonoBehaviour
             animator.SetBool("Jumping", true);                                         //passe en mode saut
             canJump = false;                                                           //empeche de re-sauter
         }
+        else if (canSwim)
+        {
+            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
+        //if (canJump)
+        //{
+        //    rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);      //x = 0 , y = jumpForce _ ForcMode(type de force)
+        //    animator.SetBool("Jumping", true);                                         //passe en mode saut
+        //    canJump = false;                                                           //empeche de re-sauter
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D col)                                   //Qd on rentre avec le collider on px sauter
     {
-        canJump = true;                                                                //px sauter
+        canJump = true;//px sauter
 
 
         animator.SetBool("Jumping", false);                                            //On arrête l'anim "Jumping"
@@ -93,16 +102,52 @@ public class Player : MonoBehaviour
 
     }
 
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////SWIM/////////////////////////////////////////////////////////
-    
-    private void OnTriggerEnter2D(Collider Plouf_Square)
+
+
+
+
+    /*private void OnTriggerEnter2D(Collider2D Plouf_Square)
     {
+       
+       
+            canJump = false;
+            canSwim = true;
 
-        if Pink_Monster 
-
+        
     }
 
 
+    private void OnTriggerExit2D(Collider2D auSecSquare)
+    {
+        canJump = true;
+        canSwim = false;
 
+
+    }*/
+    
+    private void OnTriggerEnter2D(Collider2D Plouf_Square)
+    {
+
+        Debug.Log("UnderWater");
+        canJump = false;
+        canSwim = true;
+
+        //animator.SetBool("Running", false);
+        //animator.SetBool("Jumping", false);
+        //animator.SetBool("Swiming", true);
+
+    }
+
+    private void OnTriggerExit2D(Collider2D auSecSquare)
+    {
+        Debug.Log("OutWater");
+        canJump = true;
+        canSwim = false;
+
+        //animator.SetBool("Running", false);
+        //animator.SetBool("Jumping", false);
+        //animator.SetBool("Swiming", false);
+    }
 }
