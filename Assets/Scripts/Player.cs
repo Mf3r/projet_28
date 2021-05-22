@@ -127,27 +127,33 @@ public class Player : MonoBehaviour
 
     }*/
     
-    private void OnTriggerEnter2D(Collider2D Plouf_Square)
+    private void OnTriggerEnter2D(Collider2D obj)
     {
-
-        Debug.Log("UnderWater");
-        canJump = false;
-        canSwim = true;
-
-        //animator.SetBool("Running", false);
-        //animator.SetBool("Jumping", false);
-        //animator.SetBool("Swiming", true);
+        Debug.Log(obj.tag);
+        if (obj.tag.Equals("pool"))
+        {
+            Debug.Log("UnderWater");
+            canJump = true;
+            canSwim = true;
+            //animator.SetBool("Running", false);
+            //animator.SetBool("Jumping", false);
+            //animator.SetBool("Swiming", true);
+        }
 
     }
 
-    private void OnTriggerExit2D(Collider2D auSecSquare)
+    private void OnTriggerExit2D(Collider2D obj)
     {
-        Debug.Log("OutWater");
-        canJump = true;
-        canSwim = false;
+        Debug.Log(obj.tag);
+        if (obj.tag.Equals("pool"))
+        {
+            Debug.Log("OutWater");
+            canJump = false;
+            canSwim = false;
 
-        //animator.SetBool("Running", false);
-        //animator.SetBool("Jumping", false);
-        //animator.SetBool("Swiming", false);
+            //animator.SetBool("Running", false);
+            //animator.SetBool("Jumping", false);
+            //animator.SetBool("Swiming", false);
+        }
     }
 }
