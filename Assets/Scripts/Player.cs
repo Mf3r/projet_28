@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private float speed;             //float chiffre à virgule
-    [SerializeField] private float maxSpeed;
+    [SerializeField] private float xMaxSpeed;
+    [SerializeField] private float yMaxSpeed;
     [SerializeField] private float jumpForce;
     
 
@@ -29,17 +30,33 @@ public class Player : MonoBehaviour
         controls.Main.MoveLR.canceled  += MoveLROncanceled;
     }
 
+    private void FixedUpdate()
+    {
+        var horizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x);
+        if (horizontalSpeed < xMaxSpeed)
+            rigidbody2D.AddForce(new Vector2(speed * direction, 0));
+
+        var verticalSpeed = Mathf.Abs(rigidbody2D.velocity.y);
+        if (verticalSpeed < yMaxSpeed)
+            rigidbody2D.AddForce(new Vector2(0, speed));
+
+    }
+
     private void MoveLROncanceled(InputAction.CallbackContext obj)              //MoveOnCanceled-> player statique direction =0
     {
         direction = 0;
-        animator.SetBool("Running", false);                                     //qd le player est à 0 on arrete l'animation running (running passe à false)
+        if (!canSwim)   // mode run
+        {
+            //qd le player est à 0 on arrete l'animation running (running passe à false)
+            animator.SetBool("Running", false);
+        }
+        // sinon mode swin, on ne change rien
     }
 
-    private void MoveLROnperformed(InputAction.CallbackContext obj)            //MoveOnperformed-> player non statique direction !=(diffrt) 0
+        private void MoveLROnperformed(InputAction.CallbackContext obj)            //MoveOnperformed-> player non statique direction !=(diffrt) 0
     {
         direction = obj.ReadValue<float>();                                    //qd <-> la direction devient non null 
 
-     
         if (direction > 0)                                                     //selon la direction on Flip
         {
             spriteRenderer.flipX = false;
@@ -49,7 +66,14 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        animator.SetBool("Running", true);                                     //non 0 donc en mode "Running"
+        if (canSwim)
+        {
+            animator.SetBool("Swiming", true);
+        }
+        else
+        {
+            animator.SetBool("Running", true);
+        }
 
     }
 
@@ -65,12 +89,6 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
-        //if (canJump)
-        //{
-        //    rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);      //x = 0 , y = jumpForce _ ForcMode(type de force)
-        //    animator.SetBool("Jumping", true);                                         //passe en mode saut
-        //    canJump = false;                                                           //empeche de re-sauter
-        //}
     }
 
     private void OnCollisionEnter2D(Collision2D col)                                   //Qd on rentre avec le collider on px sauter
@@ -93,40 +111,6 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-
-    private void FixedUpdate()
-    {
-        var horizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x);
-        if (horizontalSpeed < maxSpeed)
-            rigidbody2D.AddForce(new Vector2(speed * direction, 0));
-
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////SWIM/////////////////////////////////////////////////////////
-
-
-
-
-    /*private void OnTriggerEnter2D(Collider2D Plouf_Square)
-    {
-       
-       
-            canJump = false;
-            canSwim = true;
-
-        
-    }
-
-
-    private void OnTriggerExit2D(Collider2D auSecSquare)
-    {
-        canJump = true;
-        canSwim = false;
-
-
-    }*/
-    
     private void OnTriggerEnter2D(Collider2D obj)
     {
         Debug.Log(obj.tag);
@@ -135,6 +119,12 @@ public class Player : MonoBehaviour
             Debug.Log("UnderWater");
             canJump = true;
             canSwim = true;
+
+            rigidbody2D.gravityScale = 50.0f;
+            jumpForce = 200;
+            speed = 100;
+            yMaxSpeed = 100;
+
             //animator.SetBool("Running", false);
             //animator.SetBool("Jumping", false);
             //animator.SetBool("Swiming", true);
@@ -150,6 +140,12 @@ public class Player : MonoBehaviour
             Debug.Log("OutWater");
             canJump = false;
             canSwim = false;
+
+            this.rigidbody2D.gravityScale = 100.0f;
+            jumpForce = 400;
+            speed = 470;
+            yMaxSpeed = 250;
+
 
             //animator.SetBool("Running", false);
             //animator.SetBool("Jumping", false);

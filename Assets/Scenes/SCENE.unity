@@ -1857,7 +1857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216303818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 324.22934, y: 187.6228, z: -10}
+  m_LocalPosition: {x: 324.84988, y: 187.6228, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580159290}
@@ -10824,7 +10824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322853777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 378.56528, y: 173.24083, z: -10}
+  m_LocalPosition: {x: 374.89606, y: 173.25371, z: -10}
   m_LocalScale: {x: 32.74254, y: 32.74254, z: 32.74254}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16499,7 +16499,7 @@ GameObject:
   - component: {fileID: 1909869650}
   m_Layer: 0
   m_Name: Plouf_Square
-  m_TagString: Untagged
+  m_TagString: pool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17616,11 +17616,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519977086356947446, guid: 45ab4cf50146a534f9b4787ffa9cc94a, type: 3}
       propertyPath: speed
-      value: 500
+      value: 470
       objectReference: {fileID: 0}
     - target: {fileID: 4519977086356947446, guid: 45ab4cf50146a534f9b4787ffa9cc94a, type: 3}
       propertyPath: maxSpeed
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519977086356947446, guid: 45ab4cf50146a534f9b4787ffa9cc94a, type: 3}
+      propertyPath: xMaxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519977086356947446, guid: 45ab4cf50146a534f9b4787ffa9cc94a, type: 3}
+      propertyPath: yMaxSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4519977086356947446, guid: 45ab4cf50146a534f9b4787ffa9cc94a, type: 3}
       propertyPath: ground.m_Bits
